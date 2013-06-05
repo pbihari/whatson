@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  start: 2013-06-05 18:50:14
+  finish: 2013-06-05 18:50:14
+  description: MyText
+  website: MyString
+  venue: MyString
+  city: MyString
+  postcode: MyString
+  click_count: 1
+
+two:
+  title: MyString
+  start: 2013-06-05 18:50:14
+  finish: 2013-06-05 18:50:14
+  description: MyText
+  website: MyString
+  venue: MyString
+  city: MyString
+  postcode: MyString
+  click_count: 1
