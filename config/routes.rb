@@ -1,4 +1,7 @@
 Whatson::Application.routes.draw do
+  resources :categories
+
+
   resources :posts
 
 
