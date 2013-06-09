@@ -1,4 +1,6 @@
 Whatson::Application.routes.draw do
+  root to: 'static_pages#home'
+
   resources :categories
 
 
@@ -6,11 +8,14 @@ Whatson::Application.routes.draw do
 
 
   resources :users
-
   match '/signup', to: 'users#new'
 
 
   resources :events
+
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
 
   # The priority is based upon order of creation:

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  before_save :create_remember_token
   before_save { |user| user.email = email.downcase }
 
   validates :username, presence: true, length: { maximum: 50 }
@@ -22,6 +23,13 @@ class User < ActiveRecord::Base
   has_many :photos
   belongs_to :profile_photo, :class_name => "Photo"
 
+  has_many :interests
   has_many :categories, :through => :interests
+
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end
  

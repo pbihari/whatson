@@ -16,7 +16,14 @@
           
           <nav>
             <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
+              <li><%= link_to "Home", '#' %></li>
+              <% if signed_in? %>            
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>              
+              <% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+              <% end %>
             </ul>
           </nav>
         </div>
@@ -25,6 +32,5 @@
     <div class="container">
       <%= yield %>
     </div>
-
-</body>
+  </body>
 </html>
