@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
   attr_accessible :city, :click_count, :description, :finish, :postcode, :start, :title, :venue, :website
 
+  validates :title, :description, :start, :venue, :city, :postcode, :presence => true
+
   has_many :likes
   has_many :users, :through => :likes
 

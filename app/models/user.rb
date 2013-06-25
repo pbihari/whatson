@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   has_many :comments
+  
   has_many :likes
   has_many :events, :through => :likes
 

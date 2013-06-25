@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  #before_filter :signed_in_user, exclude: [:index, :show]
+
   # GET /events
   # GET /events.json
   def index
@@ -78,6 +81,21 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to events_url }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /events/new
+  # GET /events/new.json
+  def likes
+    @event = Event.find(params[:id])
+
+    if @event && current_user
+      @event.likes.create(:user_id => current_user.id) unless @event.likes.where(:user_id => current_user.id).length > 0 
+    end
+
+    respond_to do |format|
+      format.html { redirect_to events_url }
+      format.json { render json: @event }
     end
   end
 end

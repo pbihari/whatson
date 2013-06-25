@@ -1,17 +1,18 @@
-Whatson::Application.routes.draw do
-  root to: 'static_pages#home'
-
-  resources :categories
-
-
-  resources :posts
-
+Whatson::Application.routes.draw do  
+  root to: 'events#index'
 
   resources :users
   match '/signup', to: 'users#new'
 
+  resources :events  do
+    member do
+      get :likes
+    end
+  end
 
-  resources :events
+  resources :categories
+
+  resources :posts  
 
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new'
